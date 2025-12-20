@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Currículo | Sinval Gomes Neto</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    :root {
+      --primary: #e10600;
+      --secondary: #0b1c2d;
+      --dark: #0a0a0a;
+      --accent: #001eff;
+      --light: #f5f5f5;
+      --gray: #2a2a2a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--dark);
+      color: var(--light);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, var(--secondary), var(--dark));
+      padding: 40px 20px;
+      border-bottom: 4px solid var(--primary);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+    }
+
+    .profile-container {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 20px;
+    }
+
+    /* Foto de Perfil - Visível em todos os dispositivos */
+    .profile-photo-container {
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .profile-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 4px solid var(--primary);
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.4);
+      background-color: var(--dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--secondary), var(--dark));
+    }
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .profile-photo:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Placeholder para quando a foto não carrega */
+    .photo-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, var(--secondary), var(--dark));
+      color: var(--light);
+      text-align: center;
+      padding: 20px;
+    }
+
+    .photo-placeholder i {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: var(--primary);
+    }
+
+    .photo-placeholder span {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    .profile-info {
+      flex: 1;
+      text-align: left;
+      min-width: 0;
+    }
+
+    .profile-info h1 {
+      font-size: 2.5rem;
+      color: var(--light);
+      margin-bottom: 5px;
+      word-wrap: break-word;
+    }
+
+    .profile-info h2 {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+
+    .profile-info p {
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 6px;
+      transition: background 0.3s ease;
+    }
+
+    .contact-item:hover {
+      background: rgba(225, 6, 0, 0.1);
+    }
+
+    .contact-item i {
+      color: var(--primary);
+      font-size: 1rem;
+    }
+
+    /* Main Content */
+    .content {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    /* Cards */
+    .card {
+      background-color: var(--gray);
+      border-radius: 10px;
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      border-left: 4px solid var(--primary);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .card h3 {
+      color: var(--primary);
+      margin-bottom: 20px;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card h3 i {
+      font-size: 1.2rem;
+    }
+
+    /* Experience & Education */
+    .timeline {
+      position: relative;
+      padding-left: 30px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background-color: var(--primary);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 25px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -36px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      border: 3px solid var(--dark);
+    }
+
+    .timeline-date {
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 5px;
+      font-size: 0.95rem;
+    }
+
+    .timeline-title {
+      font-weight: 600;
+      margin-bottom: 5px;
+      font-size: 1.1rem;
+    }
+
+    .timeline-subtitle {
+      color: #aaa;
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    /* Skills */
+    .skills-list {
+      list-style: none;
+    }
+
+    .skill-item {
+      margin-bottom: 20px;
+    }
+
+    .skill-name {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    .skill-bar {
+      height: 8px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .skill-level {
+      height: 100%;
+      background-color: var(--primary);
+      border-radius: 4px;
+      transition: width 1s ease;
+    }
+
+    /* Sidebar */
+    .sidebar .card {
+      height: fit-content;
+    }
+
+    .languages-list, .interests-list {
+      list-style: none;
+    }
+
+    .languages-list li, .interests-list li {
+      margin-bottom: 12px;
+      padding-left: 5px;
+      font-size: 0.95rem;
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+      border-top: 1px solid var(--gray);
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 15px;
+    }
+
+    .social-links a {
+      color: var(--light);
+      font-size: 1.2rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+      display: inline-block;
+    }
+
+    .social-links a:hover {
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* Responsive Design - Foto sempre visível */
+    @media (max-width: 768px) {
+      .content {
+        grid-template-columns: 1fr;
+      }
+      
+      .profile-container {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 25px;
+        text-align: left;
+      }
+      
+      .profile-photo {
+        width: 140px;
+        height: 140px;
+      }
+      
+      .profile-info h1 {
+        font-size: 2rem;
+      }
+      
+      .profile-info h2 {
+        font-size: 1.3rem;
+      }
+      
+      .contact-info {
+        justify-content: flex-start;
+      }
+      
+      .card {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .profile-container {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 20px;
+      }
+      
+      .profile-photo {
+        width: 120px;
+        height: 120px;
+      }
+      
+      .profile-info h1 {
+        font-size: 1.8rem;
+      }
+      
+      .profile-info h2 {
+        font-size: 1.2rem;
+      }
+      
+      .contact-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      
+      .contact-item {
+        width: 100%;
+        justify-content: flex-start;
+      }
+      
+      .header {
+        padding: 30px 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .profile-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 25px;
+      }
+      
+      .profile-info {
+        text-align: center;
+      }
+      
+      .profile-photo {
+        width: 150px;
+        height: 150px;
+      }
+      
+      .contact-info {
+        align-items: center;
+      }
+      
+      .contact-item {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .profile-photo {
+        width: 130px;
+        height: 130px;
+      }
+      
+      .profile-info h1 {
+        font-size: 1.6rem;
+      }
+      
+      .profile-info h2 {
+        font-size: 1.1rem;
+      }
+    }
+
+    /* Animações suaves para carregamento */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header, .card, .footer {
+      animation: fadeIn 0.8s ease-out forwards;
+    }
+
+    .card:nth-child(2) { animation-delay: 0.1s; }
+    .card:nth-child(3) { animation-delay: 0.2s; }
+    .card:nth-child(4) { animation-delay: 0.3s; }
+    .card:nth-child(5) { animation-delay: 0.4s; }
+    .card:nth-child(6) { animation-delay: 0.5s; }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header com informações pessoais -->
+    <header class="header">
+      <div class="profile-container">
+        <div class="profile-photo-container">
+          <div class="profile-photo">
+            <!-- OPÇÃO 1: Use uma imagem local -->
+            <!-- Salve sua foto como "foto-perfil.jpg" na mesma pasta do HTML -->
+            <img src="/foto-perfil.jpg" alt="Sinval Gomes Neto" 
+                 onerror="this.onerror=null; this.style.display='none'; document.getElementById('photo-placeholder').style.display='flex';" />
+            
+            <!-- OPÇÃO 2: Placeholder que aparece se a imagem falhar -->
+            <div class="photo-placeholder" id="photo-placeholder" style="display: none;">
+              <i class="fas fa-user-circle"></i>
+              <span>Sinval Gomes Neto</span>
+              <span>Suporte Técnico</span>
+            </div>
+            
+            <!-- OPÇÃO 3: Link direto da imagem (sem parâmetros complicados) -->
+            <!-- <img src="https://media.licdn.com/dms/image/D4E03AQEm5u9J0YHfIA/profile-displayphoto-shrink_400_400/0/1766065551615?e=1724889600&v=beta&t=yR9Afsifzuxz36c93y0ydbhv-jCY2g0r6X2D0_K9qRg" alt="Sinval Gomes Neto" /> -->
+          </div>
+        </div>
+        
+        <div class="profile-info">
+          <h1>Sinval Gomes Neto</h1>
+          <h2>Suporte Técnico</h2>
+          <p>Me chamo Sinval Gomes Neto, tenho 23 anos, natural de Penedo - Alagoas. Sou uma pessoa comunicativa, proativa e dedicada, sempre buscando aprimorar minhas habilidades técnicas e interpessoais.</p>
+          
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Aracaju - Sergipe</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <span>(85) 98118-6504</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>netoart@outlook.com.br</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <main class="content">
+      <!-- Coluna Principal -->
+      <div class="main-column">
+        <!-- Seção: Sobre Mim -->
+        <section class="card">
+          <h3><i class="fas fa-user"></i> Sobre Mim</h3>
+          <p>Profissional de tecnologia com experiência em suporte técnico, atendimento ao usuário e resolução de problemas de hardware e software. Possui trajetória anterior no comércio varejista e atacadista, atuando como vendedor, além de experiência como balconista de farmácia, o que contribuiu para o desenvolvimento de forte comunicação, empatia e foco no cliente. Atua com diagnóstico de falhas, suporte presencial e remoto, e busca constante aprimoramento técnico para oferecer soluções eficientes, ágeis e de qualidade.</p>
+        </section>
+
+        <!-- Seção: Experiência Profissional -->
+        <section class="card">
+          <h3><i class="fas fa-briefcase"></i> Experiência Profissional</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">Janeiro/2018 - Dezembro/2023</div>
+              <div class="timeline-title">Vendedor Comércio Varejista/Atacadista</div>
+              <div class="timeline-subtitle">JDLS COMERCIO DE PEÇAS - Aracaju/Sergipe</div>
+              <p>Realização de vendas, negociações e pós-venda, garantindo satisfação e fidelização de clientes. Atendimento personalizado, identificando necessidades e oferecendo soluções adequadas. Organização do espaço de vendas, controle de estoque e reposição de produtos.</p>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-date">Janeiro/2024 - Maio/2025</div>
+              <div class="timeline-title">Balconista de Farmácia</div>
+              <div class="timeline-subtitle">Drogaria Sergipe - Aracaju/Sergipe</div>
+              <p>Atendimento ao cliente, fornecendo informações sobre medicamentos e produtos de saúde. Organização do balcão, controle de estoque e reposição de produtos. Auxílio na gestão de vendas e operações diárias da farmácia.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Seção: Formação Acadêmica -->
+        <section class="card">
+          <h3><i class="fas fa-graduation-cap"></i> Formação Acadêmica</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-date">2019 - 2021</div>
+              <div class="timeline-title">Ensino Médio</div>
+              <div class="timeline-subtitle">Colégio Ômega LTDA - Aracaju/Sergipe</div>
+            </div>
+            
+            <div class="timeline-item">
+              <div class="timeline-date">Em andamento</div>
+              <div class="timeline-title">Curso Técnico</div>
+              <div class="timeline-subtitle">INOVA-SE (JovemTech) - Aracaju/Sergipe</div>
+              <p>Em formação como Desenvolvedor Full Stack Júnior, com foco em aprendizado contínuo e aplicação prática de conhecimentos.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Seção: Habilidades Técnicas -->
+        <section class="card">
+          <h3><i class="fas fa-code"></i> Qualidades</h3>
+          <ul class="skills-list">
+            <li class="skill-item">
+              <div class="skill-name">
+                <span>Rápida Aprendizagem</span>
+                <span>97%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width:97%"></div>
+              </div>
+            </li>
+            
+            <li class="skill-item">
+              <div class="skill-name">
+                <span>Conhecimento em TI</span>
+                <span>97%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 97%"></div>
+              </div>
+            </li>
+            
+            <li class="skill-item">
+              <div class="skill-name">
+                <span>Comunicação</span>
+                <span>95%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 95%"></div>
+              </div>
+            </li>
+            
+            <li class="skill-item">
+              <div class="skill-name">
+                <span>Proatividade</span>
+                <span>96%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-level" style="width: 96%"></div>
+              </div>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Seção: Idiomas -->
+        <section class="card">
+          <h3><i class="fas fa-language"></i> Idiomas</h3>
+          <ul class="languages-list">
+            <li>Português - Fluente</li>
+            <li>Inglês - Intermediário</li>
+          </ul>
+        </section>
+
+        <!-- Seção: Certificações -->
+        <section class="card">
+          <h3><i class="fas fa-certificate"></i> Certificações</h3>
+          <ul class="interests-list">
+            <li>Ensino Médio - 2021</li>
+            <li>JovemTech - Em andamento</li>
+          </ul>
+        </section>
+
+        <!-- Seção: Interesses -->
+        <section class="card">
+          <h3><i class="fas fa-heart"></i> Interesses</h3>
+          <ul class="interests-list">
+            <li>Suporte Técnico (N1/N2)</li>
+            <li>Rede de Computadores</li>
+            <li>Atendimento e Suporte ao Usuário</li>
+          </ul>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <p><strong>© <span id="current-year">2025</span> - Sinval Gomes Neto. Todos os direitos reservados.</strong></p>
+      <p><strong>"Com grandes poderes vêm grandes responsabilidades."</strong></p>
+      
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/sinval-neto-64b133387/" target="_blank" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/tuxinhuu" target="_blank" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.instagram.com/eunetxinhu?utm_source=qr" target="_blank" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="mailto:netoart@outlook.com.br" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Atualiza o ano atual automaticamente
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+    
+    // Detecta se a imagem falhou ao carregar
+    document.addEventListener('DOMContentLoaded', function() {
+      const img = document.querySelector('.profile-photo img');
+      const placeholder = document.getElementById('photo-placeholder');
+      
+      // Se a imagem já falhou ao carregar
+      if (img && img.complete && img.naturalHeight === 0) {
+        img.style.display = 'none';
+        placeholder.style.display = 'flex';
+      }
+      
+      // Anima as barras de habilidade quando visíveis
+      const skillLevels = document.querySelectorAll('.skill-level');
+      
+      // Animação das barras de habilidade
+      setTimeout(() => {
+        skillLevels.forEach(level => {
+          const width = level.style.width;
+          level.style.width = '0';
+          
+          setTimeout(() => {
+            level.style.width = width;
+          }, 300);
+        });
+      }, 800);
+      
+      // Smooth hover effect para cards
+      const cards = document.querySelectorAll('.card');
+      
+      cards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+          this.style.zIndex = '10';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+          this.style.zIndex = '1';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
