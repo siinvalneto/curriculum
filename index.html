@@ -41,7 +41,6 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
-    /* Header */
     .header {
       background: linear-gradient(135deg, var(--secondary), var(--dark));
       padding: 40px;
@@ -159,7 +158,6 @@
       font-size: 1.1rem;
     }
 
-    /* Content */
     .content {
       display: grid;
       grid-template-columns: 2fr 1fr;
@@ -174,7 +172,6 @@
       }
     }
 
-    /* Cards */
     .card {
       background: rgba(40, 40, 40, 0.9);
       border-radius: 10px;
@@ -204,7 +201,6 @@
       font-size: 1.2rem;
     }
 
-    /* Timeline */
     .timeline {
       position: relative;
       padding-left: 25px;
@@ -264,7 +260,6 @@
       margin-bottom: 12px;
     }
 
-    /* Skills */
     .skills-list {
       list-style: none;
     }
@@ -293,7 +288,6 @@
       border-radius: 5px;
     }
 
-    /* Lists */
     .simple-list {
       list-style: none;
     }
@@ -311,7 +305,6 @@
       left: 0;
     }
 
-    /* Footer */
     .footer {
       text-align: center;
       padding: 30px;
@@ -344,8 +337,6 @@
       background: rgba(225, 6, 0, 0.1);
       transform: translateY(-3px);
     }
-
-    /* Responsive */
     @media (max-width: 768px) {
       .header {
         padding: 30px 20px;
@@ -401,7 +392,6 @@
       }
     }
 
-    /* Animations */
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -430,16 +420,9 @@
     <header class="header">
       <div class="profile-container">
         <div class="profile-photo">
-          <!-- Placeholder para foto - você pode adicionar sua foto depois -->
           <div class="photo-placeholder">
-            <!--<i class="fas fa-user-circle"></i>
-            <span>Sinval Gomes Neto</span>
-            <span>Suporte Técnico</span> --> 
            <img src="https://media.licdn.com/dms/image/v2/D4E03AQEm5u9J0YHfIA/profile-displayphoto-scale_400_400/B4EZsxtbLKHUAo-/0/1766065551615?e=1767830400&v=beta&t=ntlVvtOVdUcpmsaOAs0aoKkUs7sI0GiXIMM49Ai8zSQ" alt="Sinval Neto" style="width:140%;height:140%;object-fit:cover;">
           </div>
-          <!-- Para adicionar sua foto: substitua o div acima por:
-          <img src="foto.jpg" alt="Seu Nome" style="width:100%;height:100%;object-fit:cover;">
-          -->
         </div>
         
         <div class="profile-info">
@@ -604,10 +587,7 @@
   </div>
 
   <script>
-    // Atualiza ano automaticamente
     document.getElementById('current-year').textContent = new Date().getFullYear();
-    
-    // Anima barras de habilidade
     document.addEventListener('DOMContentLoaded', function() {
       const skillLevels = document.querySelectorAll('.skill-level');
       
@@ -626,3 +606,4 @@
 </body>
 
 </html>
+
