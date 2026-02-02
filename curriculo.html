@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sinval Gomes Neto | Currículo Online</title>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="icon" type="image/x-icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
   
@@ -80,6 +81,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    .profile-photo img {
+      width: 140%;
+      height: 140%;
+      object-fit: cover;
     }
 
     .photo-placeholder {
@@ -415,6 +422,14 @@
     .card:nth-child(4) { animation-delay: 0.3s; }
     .card:nth-child(5) { animation-delay: 0.4s; }
     .card:nth-child(6) { animation-delay: 0.5s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
   </style>
 </head>
 
@@ -425,7 +440,7 @@
         <div class="profile-photo">
        
           <div class="photo-placeholder"> 
-           <img src="/foto-perfil.jpg" alt="Sinval Neto" style="width:140%;height:140%;object-fit:cover;">
+           <img src="/foto-perfil.jpg" alt="Sinval Neto" width="180" height="180" loading="lazy" decoding="async">
           </div>
         </div>
         
@@ -574,13 +589,13 @@
       <p><em>"Com grandes poderes vêm grandes responsabilidades."</em></p>
       
       <div class="social-links">
-        <a href="https://www.linkedin.com/in/sinval-neto-64b133387/" target="_blank" title="LinkedIn">
+        <a href="https://www.linkedin.com/in/sinval-neto-64b133387/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
           <i class="fab fa-linkedin"></i>
         </a>
-        <a href="https://github.com/tuxinhuu" target="_blank" title="GitHub">
+        <a href="https://github.com/tuxinhuu" target="_blank" rel="noopener noreferrer" title="GitHub">
           <i class="fab fa-github"></i>
         </a>
-        <a href="https://www.instagram.com/eunetxinhu" target="_blank" title="Instagram">
+        <a href="https://www.instagram.com/eunetxinhu" target="_blank" rel="noopener noreferrer" title="Instagram">
           <i class="fab fa-instagram"></i>
         </a>
         <a href="mailto:netoart@outlook.com.br" title="Email">
@@ -591,21 +606,20 @@
   </div>
 
   <script>
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-    
-    document.addEventListener('DOMContentLoaded', function() {
-      const skillLevels = document.querySelectorAll('.skill-level');
-      
-      setTimeout(() => {
-        skillLevels.forEach(level => {
-          const width = level.style.width;
-          level.style.width = '0';
-          
-          setTimeout(() => {
-            level.style.width = width;
-          }, 300);
+    const currentYear = document.getElementById('current-year');
+    if (currentYear) {
+      currentYear.textContent = new Date().getFullYear();
+    }
+
+    const skillLevels = document.querySelectorAll('.skill-level');
+    requestAnimationFrame(() => {
+      skillLevels.forEach(level => {
+        const width = level.style.width;
+        level.style.width = '0';
+        requestAnimationFrame(() => {
+          level.style.width = width;
         });
-      }, 500);
+      });
     });
   </script>
 </body>
